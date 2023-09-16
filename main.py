@@ -5,9 +5,9 @@ from config import logger
 
 # TASKS
 from tasks.GuessingNumber import guessing_number       # 1-1
-from tasks.factorial      import factorial_func             # 1-2
-from tasks.average        import average_func                 # 1-3
-from tasks.add            import add_func                         # 1-4/1-5
+from tasks.factorial      import factorial_func        # 1-2
+from tasks.average        import average_func          # 1-3
+from tasks.add            import add_func              # 1-4/1-5
 from tasks.LargeFactorial import large_factorial_func  # 1-6
 
 def main_menu() -> None:
