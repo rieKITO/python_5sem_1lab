@@ -19,7 +19,7 @@ def main_menu() -> None:
           "5) - (1-5) - Calculate the execution time of the function.\n" +
           "6) - (1-6) - Calculate the large factorial (with threads).\n" +
           "7) - EXIT -"
-)
+    )
 
 def main():
     isExit = False
