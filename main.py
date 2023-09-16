@@ -16,7 +16,7 @@ def main_menu() -> None:
           "2) - (1-2) - Calculate the factorial.\n" +
           "3) - (1-3) - Calculate the average.\n" +
           "4) - (1-4) - Add two numbers.\n" +
-          "5) - (1-5) - Calculate the execution time of the function>\n" +
+          "5) - (1-5) - Calculate the execution time of the function.\n" +
           "6) - (1-6) - Calculate the large factorial (with threads).\n" +
           "7) - EXIT -"
 )
