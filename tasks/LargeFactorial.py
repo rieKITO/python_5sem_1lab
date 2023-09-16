@@ -5,7 +5,7 @@ import threading
 from tasks.factorial import factorial
 from tasks.InputHandling import correct_input_int
  
-def large_factorial(number, threadsNum):
+def large_factorial(number):
     if number <= 0:
         return 0
     
@@ -31,6 +31,5 @@ def large_factorial(number, threadsNum):
 
 def large_factorial_func() -> None:
     number = correct_input_int("Enter the number:")
-    threadsCount = correct_input_int("Threads count:")
 
-    print(f"Factorial: {large_factorial(number, threadsCount)}\n")
+    print(f"Factorial: {large_factorial(number)}\n")
