@@ -1,42 +1,43 @@
 import threading
+import sys
 
 # TASKS
 from tasks.factorial import factorial
 from tasks.InputHandling import correct_input_int
- 
-def large_factorial(number):
-    if number <= 0:
-        return 0
-    
-    elif number == 1:
-        return 1
 
-    results = []
-    threadsCount = 0
+def calculate_factorial(number, threadsCount):
 
-    def calculate_factorial(num):
-        result = factorial(num)
-        results.append(result)
+    def partial_factorial(start, end):
+        thread.result = factorial(start, end)
 
+    result = 1
     threads = []
-    for i in range(1, number + 1):
-        thread = threading.Thread(target=calculate_factorial, args=(i,))
+    
+    # Разделение вычислений на потоки
+    for i in range(threadsCount):
+        start = (number // threadsCount) * i + 1
+        end = (number // threadsCount) * (i + 1)
+        
+        if i == threadsCount - 1:
+            end = number
+        
+        thread = threading.Thread(target=partial_factorial, args=(start, end))
         threads.append(thread)
         thread.start()
-        threadsCount += 1
-
-        if threadsCount >= threadsNum:
-            for thread in threads:
-                thread.join()
-            threads = []
-            threadsCount = 0
-
+    
+    # Ожидание завершения всех потоков
     for thread in threads:
         thread.join()
-
-    return results[len(results) - 1]
+    
+    # Вычисление итогового результата
+    for thread in threads:
+        result *= thread.result
+    
+    return result
 
 def large_factorial_func() -> None:
+    sys.set_int_max_str_digits(100000)
     number = correct_input_int("Enter the number:")
+    threadsCount = correct_input_int("Enter the count of threads:")
 
-    print(f"Factorial: {large_factorial(number)}\n")
+    print(f"Factorial: {calculate_factorial(number, threadsCount)}\n")
