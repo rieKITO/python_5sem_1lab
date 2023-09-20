@@ -1,4 +1,3 @@
-from multiprocessing import Pool
 import threading
 
 # TASKS
@@ -13,6 +12,7 @@ def large_factorial(number):
         return 1
 
     results = []
+    threadsCount = 0
 
     def calculate_factorial(num):
         result = factorial(num)
@@ -23,6 +23,13 @@ def large_factorial(number):
         thread = threading.Thread(target=calculate_factorial, args=(i,))
         threads.append(thread)
         thread.start()
+        threadsCount += 1
+
+        if threadsCount >= threadsNum:
+            for thread in threads:
+                thread.join()
+            threads = []
+            threadsCount = 0
 
     for thread in threads:
         thread.join()
