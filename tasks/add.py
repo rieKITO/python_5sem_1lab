@@ -1,5 +1,3 @@
-import time
-
 # TASKS
 from tasks.InputHandling import correct_input_float
 
