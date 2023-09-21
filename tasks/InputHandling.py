@@ -14,6 +14,26 @@ def correct_input_int(type: str) -> int:
 
     return number
 
+def correct_input_natural(type: str) -> int:
+    isCorrect = False
+
+    while isCorrect == False:
+
+        try:
+            number = int(input(f"\n{type}\n-> "))
+
+            if number <= 0:
+                logger.warning("Inaccessible value entered!")
+
+            else:
+                isCorrect = True
+
+        except:
+            logger.warning("Inaccessible value entered!")
+        
+
+    return number
+
 def correct_input_float(type: str) -> float:
     isCorrect = False
 

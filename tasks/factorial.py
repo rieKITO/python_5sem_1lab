@@ -1,5 +1,5 @@
 # TASKS
-from tasks.InputHandling import correct_input_int
+from tasks.InputHandling import correct_input_natural
 
 def factorial(start, end) -> int:
     result = 1
@@ -10,7 +10,7 @@ def factorial(start, end) -> int:
     return result
 
 def factorial_func() -> None:
-    factorialNum = correct_input_int("Enter the number:")
+    factorialNum = correct_input_natural("Enter the number:")
     print(f"Number: {factorialNum}\n" +
           f"Factorial: {factorial(1, factorialNum)}\n"
     )

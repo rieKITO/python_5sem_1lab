@@ -4,7 +4,7 @@ import time
 
 # TASKS
 from tasks.factorial import factorial
-from tasks.InputHandling import correct_input_int
+from tasks.InputHandling import correct_input_natural
 
 def execution_time(function):
     def wrapper(*args, **kwargs):
@@ -49,7 +49,7 @@ def calculate_factorial(number, threadsCount):
 
 def large_factorial_func() -> None:
     sys.set_int_max_str_digits(100000)
-    number = correct_input_int("Enter the number:")
-    threadsCount = correct_input_int("Enter the count of threads:")
+    number = correct_input_natural("Enter the number:")
+    threadsCount = correct_input_natural("Enter the count of threads:")
 
     print(f"Factorial: {calculate_factorial(number, threadsCount)}\n")
