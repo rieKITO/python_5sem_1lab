@@ -22,7 +22,7 @@ def correct_input_natural(type: str) -> int:
         try:
             number = int(input(f"\n{type}\n-> "))
 
-            if number <= 0:
+            if number < 0:
                 logger.warning("Inaccessible value entered!")
 
             else:

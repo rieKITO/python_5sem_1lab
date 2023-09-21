@@ -1,4 +1,4 @@
-from multiprocessing import Pool
+import time
 
 #LOGS
 from config import logger
@@ -7,8 +7,13 @@ from config import logger
 from tasks.GuessingNumber import guessing_number       # 1-1
 from tasks.factorial      import factorial_func        # 1-2
 from tasks.average        import average_func          # 1-3
-from tasks.add            import add_func              # 1-4/1-5
+from tasks.add            import add_func              # 1-4
+from tasks.ExecutionTime  import calc_execution_time   # 1-5
 from tasks.LargeFactorial import large_factorial_func  # 1-6
+
+# 1-5
+def sleep_func():
+    time.sleep(1)
 
 def main_menu() -> None:
     print("Choose an action:\n" +
@@ -50,7 +55,7 @@ def main():
             case 4:
                 add_func()
             case 5:
-                add_func()
+                calc_execution_time(sleep_func)
             case 6:
                 large_factorial_func()
             case 7:

@@ -1,6 +1,6 @@
 # TASKS
 from tasks.InputHandling import correct_input_float
-from tasks.InputHandling import correct_input_int
+from tasks.InputHandling import correct_input_natural
 
 def average(*args) -> float:
     if len(args) != 0:
@@ -12,11 +12,13 @@ def average(*args) -> float:
     return average
 
 def average_func() -> None:
-    count = correct_input_int("Enter the count of arguments:")
+    count = correct_input_natural("Enter the count of arguments:")
     args = []
 
-    for i in range(0, count):
-        number = correct_input_float(f"Enter the {i + 1} argument:")
-        args.append(number)
+    if count != 0:
+        for i in range(0, count):
+            number = correct_input_float(f"Enter the {i + 1} argument:")
+            args.append(number)
 
-    print(f"Average: {average(*args)}\n")
+        print(f"Average: {average(*args)}\n")
+    else: print(f"Average: 0\n")

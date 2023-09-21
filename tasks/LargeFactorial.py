@@ -1,22 +1,10 @@
 import threading
 import sys
-import time
 
 # TASKS
 from tasks.factorial import factorial
 from tasks.InputHandling import correct_input_natural
 
-def execution_time(function):
-    def wrapper(*args, **kwargs):
-        startTime = time.time()
-        result = function(*args, **kwargs)
-        endTime = time.time()
-        executionTime = format((endTime - startTime) * 1000, '.100f')
-        print(f"{function.__name__} was completed in {executionTime}ms\n")
-        return result
-    return wrapper
-
-@execution_time
 def calculate_factorial(number, threadsCount):
 
     def partial_factorial(start, end):
@@ -25,7 +13,6 @@ def calculate_factorial(number, threadsCount):
     result = 1
     threads = []
     
-    # Разделение вычислений на потоки
     for i in range(threadsCount):
         start = (number // threadsCount) * i + 1
         end = (number // threadsCount) * (i + 1)
@@ -37,11 +24,9 @@ def calculate_factorial(number, threadsCount):
         threads.append(thread)
         thread.start()
     
-    # Ожидание завершения всех потоков
     for thread in threads:
         thread.join()
     
-    # Вычисление итогового результата
     for thread in threads:
         result *= thread.result
     
